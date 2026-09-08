@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Aaron P. Chamberlain | Computer Science Educator</title>
+
+    <!-- Bootstrap 5 -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =========================================================
+           GLOBAL
+           ========================================================= */
+
+        :root {
+            --navy: #172a3a;
+            --navy-dark: #101d29;
+            --blue: #315b78;
+            --accent: #b8945b;
+            --accent-light: #d7bd91;
+            --cream: #f7f5f0;
+            --warm-white: #fcfbf8;
+            --text: #29333b;
+            --muted: #69747c;
+            --border: #e3e0d9;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--warm-white);
+            color: var(--text);
+            font-family: "DM Sans", sans-serif;
+            line-height: 1.7;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: "Playfair Display", serif;
+        }
+
+        a {
+            color: var(--blue);
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: var(--accent);
+        }
+
+        /* =========================================================
+           NAVIGATION
+           ========================================================= */
+
+        .navbar {
+            background: rgba(23, 42, 58, 0.97);
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar-brand {
+            font-family: "Playfair Display", serif;
+            font-size: 1.25rem;
+            color: white !important;
+            letter-spacing: .5px;
+        }
+
+        .navbar-nav .nav-link {
+            color: rgba(255,255,255,.75);
+            font-size: .9rem;
+            margin-left: 1rem;
+            transition: color .2s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: white;
+        }
+
+        /* =========================================================
+           HERO
+           ========================================================= */
+
+        .hero {
+            position: relative;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(16,29,41,.98),
+                    rgba(23,42,58,.94)
+                );
+            color: white;
+            padding: 100px 0 90px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            border: 1px solid rgba(216,189,145,.18);
+            border-radius: 50%;
+            right: -150px;
+            top: -180px;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border: 1px solid rgba(216,189,145,.12);
+            border-radius: 50%;
+            right: -80px;
+            top: -110px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-kicker {
+            color: var(--accent-light);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: .78rem;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 5.4rem);
+            line-height: 1.02;
+            margin-bottom: 20px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,.78);
+            max-width: 720px;
+        }
+
+        .hero-contact {
+            margin-top: 28px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px 28px;
+            font-size: .9rem;
+            color: rgba(255,255,255,.72);
+        }
+
+        .hero-contact i {
+            color: var(--accent-light);
+            margin-right: 7px;
+        }
+
+        /* =========================================================
+           PORTRAIT
+           ========================================================= */
+
+        .portrait-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .portrait-frame {
+            width: 260px;
+            height: 310px;
+            border: 1px solid rgba(216,189,145,.6);
+            padding: 10px;
+            position: relative;
+            transform: rotate(1deg);
+        }
+
+        .portrait-frame::before {
+            content: "";
+            position: absolute;
+            inset: -8px;
+            border: 1px solid rgba(216,189,145,.25);
+            pointer-events: none;
+        }
+
+        .portrait {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background: #344957;
+        }
+
+        /* =========================================================
+           SECTION BASICS
+           ========================================================= */
+
+        .section {
+            padding: 90px 0;
+        }
+
+        .section-alt {
+            background: var(--cream);
+        }
+
+        .section-label {
+            text-transform: uppercase;
+            color: var(--accent);
+            letter-spacing: 3px;
+            font-size: .75rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            color: var(--navy);
+            font-size: 2.4rem;
+            margin-bottom: 35px;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 55px;
+            height: 2px;
+            background: var(--accent);
+            margin-top: 16px;
+        }
+
+        /* =========================================================
+           PROFILE
+           ========================================================= */
+
+        .profile-text {
+            font-size: 1.08rem;
+            color: #4d5961;
+        }
+
+        .profile-highlight {
+            border-left: 3px solid var(--accent);
+            padding-left: 25px;
+            margin-top: 25px;
+            font-family: "Playfair Display", serif;
+            font-size: 1.25rem;
+            color: var(--navy);
+        }
+
+        /* =========================================================
+           EDUCATION
+           ========================================================= */
+
+        .education-card {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 35px;
+            box-shadow: 0 8px 30px rgba(23,42,58,.05);
+        }
+
+        .education-card h3 {
+            color: var(--navy);
+            font-size: 1.45rem;
+        }
+
+        .education-meta {
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        .achievement {
+            display: inline-block;
+            background: var(--cream);
+            border: 1px solid var(--border);
+            padding: 7px 13px;
+            margin: 4px 4px 4px 0;
+            font-size: .85rem;
+        }
+
+        /* =========================================================
+           EXPERIENCE TIMELINE
+           ========================================================= */
+
+        .timeline {
+            position: relative;
+            padding-left: 35px;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 7px;
+            top: 8px;
+            bottom: 8px;
+            width: 1px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 48px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -35px;
+            top: 7px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--warm-white);
+            border: 3px solid var(--accent);
+        }
+
+        .timeline-date {
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: .72rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 6px;
+        }
+
+        .timeline-title {
+            color: var(--navy);
+            font-size: 1.45rem;
+            margin-bottom: 2px;
+        }
+
+        .timeline-company {
+            color: var(--blue);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .timeline-item ul {
+            padding-left: 1.2rem;
+            margin-bottom: 0;
+        }
+
+        .timeline-item li {
+            margin-bottom: 6px;
+            color: #58636a;
+        }
+
+        /* =========================================================
+           AWARDS
+           ========================================================= */
+
+        .award-card {
+            height: 100%;
+            background: white;
+            border: 1px solid var(--border);
+            padding: 30px;
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .award-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(23,42,58,.08);
+        }
+
+        .award-icon {
+            font-size: 1.7rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .award-card h3 {
+            font-size: 1.25rem;
+            color: var(--navy);
+        }
+
+        .award-card p {
+            color: var(--muted);
+            font-size: .92rem;
+            margin-bottom: 0;
+        }
+
+        /* =========================================================
+           MILITARY
+           ========================================================= */
+
+        .military-section {
+            background: var(--navy);
+            color: white;
+        }
+
+        .military-section .section-label {
+            color: var(--accent-light);
+        }
+
+        .military-section .section-title {
+            color: white;
+        }
+
+        .military-section .section-title::after {
+            background: var(--accent-light);
+        }
+
+        .military-card {
+            border: 1px solid rgba(255,255,255,.13);
+            background: rgba(255,255,255,.04);
+            padding: 35px;
+        }
+
+        .military-card h3 {
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .military-card .date {
+            color: var(--accent-light);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: .75rem;
+            font-weight: 700;
+        }
+
+        .military-card ul {
+            padding-left: 1.2rem;
+            color: rgba(255,255,255,.72);
+        }
+
+        .medals {
+            margin-top: 28px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255,255,255,.12);
+        }
+
+        .medal {
+            display: inline-block;
+            margin: 4px 4px 4px 0;
+            padding: 7px 12px;
+            border: 1px solid rgba(216,189,145,.4);
+            color: rgba(255,255,255,.82);
+            font-size: .82rem;
+        }
+
+        /* =========================================================
+           SKILLS / AREAS
+           ========================================================= */
+
+        .skill-pill {
+            display: inline-block;
+            padding: 9px 16px;
+            border: 1px solid var(--border);
+            margin: 4px;
+            background: white;
+            color: var(--blue);
+            font-size: .86rem;
+        }
+
+        /* =========================================================
+           CONTACT
+           ========================================================= */
+
+        .contact-section {
+            background: var(--cream);
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            color: var(--navy);
+            font-size: 2.5rem;
+        }
+
+        .contact-box {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-link {
+            display: inline-block;
+            margin: 8px 10px;
+            padding: 12px 20px;
+            background: white;
+            border: 1px solid var(--border);
+            transition: all .2s ease;
+        }
+
+        .contact-link:hover {
+            background: var(--navy);
+            color: white;
+        }
+
+        /* =========================================================
+           FOOTER
+           ========================================================= */
+
+        footer {
+            background: var(--navy-dark);
+            color: rgba(255,255,255,.55);
+            padding: 28px 0;
+            font-size: .8rem;
+            text-align: center;
+        }
+
+        /* =========================================================
+           PRINT
+           ========================================================= */
+
+        @media print {
+
+            .navbar {
+                display: none;
+            }
+
+            .hero {
+                padding: 40px 0;
+            }
+
+            .section {
+                padding: 35px 0;
+            }
+
+            .timeline-item {
+                break-inside: avoid;
+            }
+
+            .award-card,
+            .education-card {
+                box-shadow: none;
+            }
+
+            footer {
+                display: none;
+            }
+        }
+
+        /* =========================================================
+           MOBILE
+           ========================================================= */
+
+        @media (max-width: 767px) {
+
+            .hero {
+                padding: 70px 0;
+                text-align: center;
+            }
+
+            .portrait-wrapper {
+                margin-top: 50px;
+            }
+
+            .portrait-frame {
+                width: 220px;
+                height: 265px;
+            }
+
+            .hero-contact {
+                justify-content: center;
+            }
+
+            .section {
+                padding: 65px 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .timeline {
+                padding-left: 28px;
+            }
+
+            .timeline-item::before {
+                left: -28px;
+            }
+
+            .timeline::before {
+                left: 7px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- =============================================================
+     NAVIGATION
+     ============================================================= -->
+
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+
+        <a class="navbar-brand" href="#top">
+            Aaron P. Chamberlain
+        </a>
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNavigation"
+            aria-controls="mainNavigation"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavigation">
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#profile">Profile</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#education">Education</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#experience">Experience</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#awards">Recognition</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#military">Military</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+
+<!-- =============================================================
+     HERO
+     ============================================================= -->
+
+<header class="hero" id="top">
+
+    <div class="container hero-content">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-8">
+
+                <div class="hero-kicker">
+                    Computer Science Educator · Coach · Author
+                </div>
+
+                <h1>
+                    Aaron P.<br>
+                    Chamberlain
+                </h1>
+
+                <p class="hero-subtitle">
+                    Computer science educator, author, coach, and former
+                    programmer with experience spanning education, software
+                    development, systems analysis, mathematics, and military
+                    leadership.
+                </p>
+
+                <div class="hero-contact">
+
+                    <span>
+                        <i class="bi bi-geo-alt"></i>
+                        Janesville, Wisconsin
+                    </span>
+
+                    <span>
+                        <i class="bi bi-telephone"></i>
+                        608-774-6386
+                    </span>
+
+                    <span>
+                        <i class="bi bi-envelope"></i>
+                        <a href="mailto:aaron.chamberlain@nbexcellence.org"
+                           style="color: inherit;">
+                            a3k.chamberlain@gmail.com
+                        </a>
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- PORTRAIT -->
+
+            <div class="col-lg-4 portrait-wrapper">
+
+                <div class="portrait-frame">
+
+                    <!--
+                        REPLACE THE IMAGE BELOW WITH A PORTRAIT.
+
+                        Example:
+                        <img src="aaron.jpg"
+                             alt="Portrait of Aaron P. Chamberlain"
+                             class="portrait">
+
+                        If you want to use a portrait stored in the same
+                        folder as this HTML file, simply change the src
+                        to "aaron.jpg".
+                    -->
+
+                    <img
+                        src="https://placehold.co/500x600/344957/f7f5f0?text=Aaron+Chamberlain"
+                        alt="Portrait of Aaron P. Chamberlain"
+                        class="portrait"
+                    >
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =============================================================
+     PROFILE
+     ============================================================= -->
+
+<section class="section" id="profile">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-9">
+
+                <div class="section-label">
+                    Professional Profile
+                </div>
+
+                <h2 class="section-title">
+                    Educator. Technologist. Leader.
+                </h2>
+
+                <p class="profile-text">
+                    High school computer science teacher, computer science
+                    coach, and computer science author with real-life
+                    experience and a proven background in computer
+                    programming, systems analysis, and mathematics.
+                </p>
+
+                <p class="profile-text">
+                    Dedicated, determined, and dependable, with these qualities
+                    demonstrated throughout a career in education as well as
+                    service in the United States Army Reserves as a
+                    transportation coordinator.
+                </p>
+
+                <div class="profile-highlight">
+                    Bringing professional programming experience, technical
+                    expertise, and a passion for computer science education
+                    into the classroom.
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =============================================================
+     EDUCATION
+     ============================================================= -->
+
+<section class="section section-alt" id="education">
+
+    <div class="container">
+
+        <div class="section-label">
+            Education
+        </div>
+
+        <h2 class="section-title">
+            Academic Background
+        </h2>
+
+        <div class="row">
+
+            <div class="col-lg-8">
+
+                <div class="education-card">
+
+                    <h3>
+                        Bachelor of Science in Education
+                    </h3>
+
+                    <div class="education-meta">
+                        University of Wisconsin–Whitewater
+                    </div>
+
+                    <ul>
+                        <li>
+                            Mathematics and Computer Science Education
+                        </li>
+
+                        <li>
+                            Graduated <strong>Summa Cum Laude</strong>
+                        </li>
+
+                        <li>
+                            Inductee, Pi Mu Epsilon Mathematics Honor Society
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =============================================================
+     EXPERIENCE
+     ============================================================= -->
+
+<section class="section" id="experience">
+
+    <div class="container">
+
+        <div class="section-label">
+            Career
+        </div>
+
+        <h2 class="section-title">
+            Professional Experience
+        </h2>
+
+
+        <div class="timeline">
+
+
+            <!-- New Berlin Eisenhower -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-date">
+                    August 2016 – Present
+                </div>
+
+                <h3 class="timeline-title">
+                    Computer Science Teacher
+                </h3>
+
+                <div class="timeline-company">
+                    New Berlin Eisenhower High School
+                </div>
+
+                <ul>
+                    <li>
+                        Currently teach AP Computer Science A,
+                        AP Computer Science Principles, AP Cybersecurity,
+                        Web Development, Game Design, and Introduction to
+                        Computer Science I and II.
+                    </li>
+
+                    <li>
+                        90% passing rate for students who took the
+                        AP Computer Science A or Principles exams.
+                    </li>
+
+                    <li>
+                        Recipient of the Herb Kohl Fellowship Award for
+                        excellence in education, 2019.
+                    </li>
+
+                    <li>
+                        NCWIT Wisconsin Teacher of the Year, 2018.
+                    </li>
+
+                    <li>
+                        Student teams under my guidance have finished in the
+                        top three at the Marquette University Programming
+                        Competition and Milwaukee School of Engineering
+                        Programming Competition.
+                    </li>
+
+                    <li>
+                        Esports Coach since 2021 through WIHSEA and PlayVS;
+                        runner-up in the division in multiple years.
+                    </li>
+                </ul>
+
+            </div>
+
+
+            <!-- CSTA -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-date">
+                    April 2026 – Present
+                </div>
+
+                <h3 class="timeline-title">
+                    Member at Large
+                </h3>
+
+                <div class="timeline-company">
+                    Computer Science Teachers Association Leadership
+                </div>
+
+                <ul>
+                    <li>
+                        Participate in frequent planning meetings and monthly
+                        leadership activities.
+                    </li>
+
+                    <li>
+                        Participate in planning and presentation of the
+                        annual Computer Science Summit in Wisconsin.
+                    </li>
+                </ul>
+
+            </div>
+
+
+            <!-- College Board Consultant -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-date">
+                    December 2025 – Present
+                </div>
+
+                <h3 class="timeline-title">
+                    AP Computer Science A Consultant
+                </h3>
+
+                <div class="timeline-company">
+                    College Board
+                </div>
+
+                <ul>
+                    <li>
+                        Run AP Computer Science A workshops throughout the
+                        school year.
+                    </li>
+
+                    <li>
+                        Run AP Summer Institutes (APSI) during the summer
+                        for new computer science teachers.
+                    </li>
+                </ul>
+
+            </div>
+
+
+            <!-- Scaling Mentors -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-date">
+                    July 2024 – July 2025
+                </div>
+
+                <h3 class="timeline-title">
+                    Computer Science Mentor
+                </h3>
+
+                <div class="timeline-company">
+                    Scaling Mentors in Equity
+                </div>
+
+                <ul>
+                    <li>
+                        Participated in the Scaling Mentors in Equity program
+                        run through the National Science Foundation.
+                    </li>
+
+                    <li>
+                        Mentored a new computer science teacher throughout
+                        the school year.
+                    </li>
+                </ul>
+
+            </div>
+
+
+            <!-- AP Reader -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-date">
+                    June 2023 – Present
+                </div>
+
+                <h3 class="timeline-title">
+                    AP Computer Science Exam Reader
+                </h3>
+
+                <div class="timeline-company">
+                    College Board
+                </div>
+
+                <ul>
+                    <li>
+                        Scored AP Computer Science Principles exams,
+                        2023–2025.
+                    </li>
+
+                    <li>
+                        Scored AP Computer Science A exams beginning in 2026.
+                    </li>
+                </ul>
+
+            </div>
+
+
+            <!-- NCCSE -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-date">
+                    July 2023 – July 2024
+                </div>
+
+                <h3 class="timeline-title">
+                    Computer Science Coach
+                </h3>
+
+                <div class="timeline-company">
+                    National Center for Computer Science Education
+                </div>
+
+                <ul>
+                    <li>
+                        Participated in the Coaching for Equity program
+                        through NCCSE and Code Savvy.
+                    </li>
+
+                    <li>
+                        Coached computer science teachers from various
+                        parts of the country.
+                    </li>
+                </ul>
+
+            </div>
+
+
+            <!-- Wisconsin Virtual School -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-date">
+                    September 2017 – June 2018
+                </div>
+
+                <h3 class="timeline-title">
+                    Online Computer Science Teacher
+                </h3>
+
+                <div class="timeline-company">
+                    Wisconsin Virtual School
+                </div>
+
+                <ul>
+                    <li>
+                        Taught AP Computer Science A and Game Design
+                        to Wisconsin students.
+                    </li>
+                </ul>
+
+            </div>
+
+
+            <!-- McGraw Hill -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-date">
+                    November 2014 – December 2018
+                </div>
+
+                <h3 class="timeline-title">
+                    Author
+                </h3>
+
+                <div class="timeline-company">
+                    McGraw Hill
+                </div>
+
+                <ul>
+                    <li>
+                        Coauthor with two other AP Computer Science A
+                        teachers of
+                        <em>Five Steps to a Five: AP Computer Science A</em>
+                        (2016–2018).
+                    </li>
+                </ul>
+
+            </div>
+
+
+            <!-- Fort Atkinson -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-date">
+                    August 2013 – June 2016
+                </div>
+
+                <h3 class="timeline-title">
+                    Mathematics and Computer Science Teacher
+                </h3>
+
+                <div class="timeline-company">
+                    Fort Atkinson High School
+                </div>
+
+                <ul>
+                    <li>
+                        Taught AP Computer Science A, Geometry,
+                        Consumer Mathematics, and Algebra I.
+                    </li>
+
+                    <li>
+                        75% passing rate for students who took the
+                        AP Computer Science A exam.
+                    </li>
+                </ul>
+
+            </div>
+
+
+            <!-- Blackthorne -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-date">
+                    April 2013 – August 2013
+                </div>
+
+                <h3 class="timeline-title">
+                    Programmer
+                </h3>
+
+                <div class="timeline-company">
+                    Blackthorne Capital Management
+                </div>
+
+                <ul>
+                    <li>
+                        Wrote Java code to facilitate transactions through
+                        the Chicago Mercantile Exchange.
+                    </li>
+
+                    <li>
+                        Summer position with the option to return based upon
+                        teaching schedule, which was declined.
+                    </li>
+                </ul>
+
+            </div>
+
+
+            <!-- Cummins -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-date">
+                    January 2008 – January 2009
+                </div>
+
+                <h3 class="timeline-title">
+                    Shipping Clerk
+                </h3>
+
+                <div class="timeline-company">
+                    Cummins Emission Systems
+                </div>
+
+                <ul>
+                    <li>
+                        Managed shipping of parts and products from the
+                        warehouse to vendors and the factory.
+                    </li>
+
+                    <li>
+                        Trained as an Auditor to complete inventories
+                        of the warehouse.
+                    </li>
+                </ul>
+
+            </div>
+
+
+            <!-- State Collection -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-date">
+                    August 2003 – September 2007
+                </div>
+
+                <h3 class="timeline-title">
+                    Systems Analyst
+                </h3>
+
+                <div class="timeline-company">
+                    State Collection Service
+                </div>
+
+                <ul>
+                    <li>
+                        Created load conversions from client systems to
+                        local systems using Microsoft Access, MySQL,
+                        Java, and the FACS Enable scripting system.
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =============================================================
+     RECOGNITION
+     ============================================================= -->
+
+<section class="section section-alt" id="awards">
+
+    <div class="container">
+
+        <div class="section-label">
+            Recognition
+        </div>
+
+        <h2 class="section-title">
+            Honors & Distinctions
+        </h2>
+
+        <div class="row g-4">
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="award-card">
+
+                    <div class="award-icon">
+                        <i class="bi bi-award"></i>
+                    </div>
+
+                    <h3>
+                        Herb Kohl Fellowship
+                    </h3>
+
+                    <p>
+                        Award for excellence in education, 2019.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="award-card">
+
+                    <div class="award-icon">
+                        <i class="bi bi-trophy"></i>
+                    </div>
+
+                    <h3>
+                        NCWIT Teacher of the Year
+                    </h3>
+
+                    <p>
+                        Wisconsin Teacher of the Year, 2018.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="award-card">
+
+                    <div class="award-icon">
+                        <i class="bi bi-mortarboard"></i>
+                    </div>
+
+                    <h3>
+                        Summa Cum Laude
+                    </h3>
+
+                    <p>
+                        Graduated with highest academic honors from the
+                        University of Wisconsin–Whitewater.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="award-card">
+
+                    <div class="award-icon">
+                        <i class="bi bi-code-slash"></i>
+                    </div>
+
+                    <h3>
+                        Programming Competition
+                    </h3>
+
+                    <p>
+                        Student teams achieved top-three finishes at
+                        regional university programming competitions.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =============================================================
+     AREAS OF EXPERTISE
+     ============================================================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-4">
+
+                <div class="section-label">
+                    Expertise
+                </div>
+
+                <h2 class="section-title">
+                    Technical & Educational Focus
+                </h2>
+
+            </div>
+
+            <div class="col-lg-8">
+
+                <div class="mb-4">
+
+                    <span class="skill-pill">
+                        AP Computer Science A
+                    </span>
+
+                    <span class="skill-pill">
+                        AP Computer Science Principles
+                    </span>
+
+                    <span class="skill-pill">
+                        AP Cybersecurity
+                    </span>
+
+                    <span class="skill-pill">
+                        Java
+                    </span>
+
+                    <span class="skill-pill">
+                        Web Development
+                    </span>
+
+                    <span class="skill-pill">
+                        Game Design
+                    </span>
+
+                    <span class="skill-pill">
+                        Computer Science Education
+                    </span>
+
+                    <span class="skill-pill">
+                        Mathematics Education
+                    </span>
+
+                    <span class="skill-pill">
+                        Programming
+                    </span>
+
+                    <span class="skill-pill">
+                        Systems Analysis
+                    </span>
+
+                    <span class="skill-pill">
+                        MySQL
+                    </span>
+
+                    <span class="skill-pill">
+                        Microsoft Access
+                    </span>
+
+                    <span class="skill-pill">
+                        Esports Coaching
+                    </span>
+
+                    <span class="skill-pill">
+                        Teacher Coaching
+                    </span>
+
+                    <span class="skill-pill">
+                        AP Exam Reading
+                    </span>
+
+                    <span class="skill-pill">
+                        Professional Development
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =============================================================
+     MILITARY
+     ============================================================= -->
+
+<section class="section military-section" id="military">
+
+    <div class="container">
+
+        <div class="section-label">
+            Military Service
+        </div>
+
+        <h2 class="section-title">
+            United States Army Reserve
+        </h2>
+
+        <div class="military-card">
+
+            <div class="date">
+                May 2009 – May 2016
+            </div>
+
+            <h3 class="mt-2">
+                Specialist, 88N — Management Transportation Coordinator
+            </h3>
+
+            <p class="text-white-50 mb-4">
+                United States Army Reserve
+            </p>
+
+            <ul>
+
+                <li>
+                    Led junior soldiers in training and coaching of
+                    technical, tactical, and physical skills.
+                </li>
+
+                <li>
+                    Trained in BCS3 and TC-AIMS II computer combat
+                    support sustainment systems.
+                </li>
+
+                <li>
+                    Managed the billeting office for a WAREX exercise,
+                    planning and housing accommodations for
+                    approximately 10,000 soldiers.
+                </li>
+
+            </ul>
+
+
+            <div class="medals">
+
+                <div class="text-uppercase small fw-bold mb-3"
+                     style="letter-spacing:2px;color:#d7bd91;">
+                    Commendations & Distinctions
+                </div>
+
+                <span class="medal">
+                    Meritorious Service Medal
+                </span>
+
+                <span class="medal">
+                    Army Good Conduct Medal
+                </span>
+
+                <span class="medal">
+                    Army Reserve Component Achievement Medal
+                </span>
+
+                <span class="medal">
+                    Global War on Terror Expeditionary Medal
+                </span>
+
+                <span class="medal">
+                    Highest Possible ASVAB Score
+                </span>
+
+                <span class="medal">
+                    AIT Honor Graduate
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =============================================================
+     CONTACT
+     ============================================================= -->
+
+<section class="section contact-section" id="contact">
+
+    <div class="container">
+
+        <div class="contact-box">
+
+            <div class="section-label">
+                Get in Touch
+            </div>
+
+            <h2 class="mb-4">
+                Contact Aaron
+            </h2>
+
+            <p class="text-muted mb-4">
+                Computer science education, professional development,
+                programming, coaching, and educational collaboration.
+            </p>
+
+            <a
+                class="contact-link"
+                href="mailto:aaron.chamberlain@nbexcellence.org"
+            >
+                <i class="bi bi-envelope me-2"></i>
+                Email
+            </a>
+
+            <a
+                class="contact-link"
+                href="tel:+16087746386"
+            >
+                <i class="bi bi-telephone me-2"></i>
+                608-774-6386
+            </a>
+
+            <div class="mt-4 text-muted small">
+                Janesville, Wisconsin 53546
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =============================================================
+     FOOTER
+     ============================================================= -->
+
+<footer>
+
+    <div class="container">
+
+        <div>
+            Aaron P. Chamberlain
+        </div>
+
+        <div class="mt-1">
+            Computer Science Educator · Coach · Author
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- Bootstrap JavaScript -->
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+</body>
+</html>
